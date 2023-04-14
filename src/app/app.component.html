@@ -1,0 +1,40 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <button class="btn btn-primary" (click)="initNewBook()">Create New Book</button>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-md-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Description</th>
+            <th>ISBN</th>
+            <th>Pages</th>
+            <th>Rating</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of books">
+            <td> {{ book.title }} </td>
+            <td> {{ book.author }} </td>
+            <td> {{ book.description }} </td>
+            <td> {{ book.isbn }} </td>
+            <td> {{ book.pages }} </td>
+            <td> {{ book.rating }} </td>
+            <td><button class="btn btn-secondary" (click)="editBook(book)">Edit</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-md-12">
+      <app-edit-book [book]="bookToEdit" (booksUpdated)="updateBookStore($event)"></app-edit-book>
+    </div>
+  </div>
+</div>
